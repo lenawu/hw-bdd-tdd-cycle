@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :rating, :description, :release_date, :director)
   end
 
   def show
@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     case sort
     when 'title'
       ordering,@title_header = {:title => :asc}, 'hilite'
-    when 'release_date'
+
       ordering,@date_header = {:release_date => :asc}, 'hilite'
     end
     @all_ratings = Movie.all_ratings
